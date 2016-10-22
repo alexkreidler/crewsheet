@@ -7,6 +7,6 @@ var submit = e('submit');
 submit.addEventListener('click', function(){
     db.ref().push({'email': e('email').value}, function(){
         submit.innerHTML = 'Done!';
-        submit.submit.classList += ' disabled'
+        submit.classList += ' disabled'
     });
 });
