@@ -5,5 +5,7 @@ function e(x) {
 
 var submit = e('submit');
 submit.addEventListener('click', function(){
-    db.ref().child('users').push({'email': e('email')}.value);
+    db.ref().push({'email': e('email')}.value}, function(){
+        submit.innerHTML = 'Done!';
+    });
 });
