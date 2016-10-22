@@ -4,28 +4,52 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link href="./default.css" rel="stylesheet" type="text/css">
+  <link href="//v4.pingendo.com/assets/bootstrap/themes/default.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-
   <div class="bg-danger section section-fill-height text-xs-center">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <h1 class="display-1 pi-draggable pi-item">CREWSHEET</h1>
-          <p class="lead pi-draggable pi-item">The definitive tool for content creation management.</p>
-          <a href="#" class="btn btn-darkest btn-lg btn-secondary m-y-lg">Sign Up</a>
+          <p class="lead pi-draggable pi-item">The definitive tool for production management.</p>
+          <a class="btn btn-darkest btn-lg btn-secondary m-y-lg" data-toggle="modal" data-target="#modal">Sign Up</a>
         </div>
       </div>
     </div>
   </div>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   <script type="text/javascript" src="//cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+  <div class="fade modal" id="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close" data-dismiss="modal" type="button">×</button>
+          <h4 class="modal-title">Sign Up</h4>
+        </div>
+        <div class="modal-body">
+          <form class="" draggable="true">
+            <div class="form-group">
+              <label>Email address</label>
+              <input type="email" class="form-control" placeholder="Enter email" id="email">
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" class="form-control" placeholder="Password" id="password">
+            </div>
 
+          </form>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-default" data-dismiss="modal">Close</a>
+          <a class="btn btn-danger" id="submit">Submit</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-
-
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.6.11.min.js"></script>
 </body>
 
 </html>
