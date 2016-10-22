@@ -5,5 +5,5 @@ function e(x) {
 
 var submit = e('submit');
 submit.addEventListener('click', function(){
-    db.ref().child('users').push({'email': e('email')});
+    db.ref().child('users').push({'email': e('email')}.value);
 });
