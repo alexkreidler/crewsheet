@@ -1,4 +1,4 @@
-db = firebase.database();
+var db = firebase.database();
 function e(x) {
     return document.getElementById(x);
 }
