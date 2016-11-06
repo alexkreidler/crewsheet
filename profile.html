@@ -38,7 +38,7 @@
           <h1 class="text-inverse">Jim Kreidler</h1>
           <h3 class="text-inverse">Producer</h3>
           <p class="text-inverse">Currently works
-            <a href="#" style="text-decoration: none;" class="text-danger">@GMMB</a>in
+            <a href="#" style="text-decoration: none;" class="text-danger" id="drop-gmmb">@GMMB</a>in
             <a href="#" style="text-decoration: none;" class="text-danger">@WashingtonDC</a>
             <br>
           </p>
@@ -69,79 +69,22 @@
       </div>
     </div>
   </div>
-  <div class="example" data-theme="drop-theme-basic drop-target-example-hover-card" data-open-on="hover">
-    <div class="example-info">
-      <h2>"The Hover Card"</h2>
-      <h3>Facebook-style Image Hover Card</h3>
-    </div>
-    <div class="example-inner">
-      <div class="drop-target drop-target-example-hover-card">
-        <img src="/drop/docs/welcome/images/elias.png">
-      </div>
-      <div class="drop-content">
-        <div class="hover-card-mask">
-          <img src="/drop/docs/welcome/images/elias-kitesurfing.png">
-        </div>
-        <div class="hover-card-image">
-          <img src="/drop/docs/welcome/images/elias-kitesurfing.png">
-        </div>
-        <div class="drop-content-inner">
-          <div class="avatar">
-            <img src="/drop/docs/welcome/images/elias.png">
-          </div>
-          <div class="name">
-            Elias Torres
-          </div>
-          <div class="title">
-            VP Engineering, HubSpot
-          </div>
-        </div>
-      </div>
-      <!-- preload image -->
-      <div style="height: 0; overflow: hidden">
-        <img src="/drop/docs/welcome/images/elias-kitesurfing.png">
-      </div>
-    </div>
-  </div>
-  <div class="section">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="carousel slide" data-interval="false" data-ride="carousel" id="carousel-example">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
 
-                <div class="carousel-caption">
-                  <h2>Slide 1</h2>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <img class="img-fluid" src="http://v4.pingendo.com/assets/photos/food/cover-1.jpg">
-                <div class="carousel-caption">
-                  <h2>Title</h2>
-                  <p>Description</p>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <img class="img-fluid" src="http://v4.pingendo.com/assets/photos/apple/cover-1.jpg">
-                <div class="carousel-caption">
-                  <h2>Title</h2>
-                  <p>Description</p>
-                </div>
-              </div>
-            </div>
-            <a class="left carousel-control" href="#carousel-example" data-slide="prev"><i class="icon-prev  fa fa-angle-left"></i></a>
-            <a class="right carousel-control" href="#carousel-example" data-slide="next"><i class="icon-next fa fa-angle-right"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether-drop/1.4.2/js/drop.min.js"></script>
+
+  <script>
+    let dropInstance = new Drop({
+      target: document.querySelector('#drop-gmmb'),
+      content: 'Welcome to the future',
+      classes: 'drop-theme-basic',
+      position: 'bottom left',
+      openOn: 'click'
+    })
+  </script>
 
 
 
