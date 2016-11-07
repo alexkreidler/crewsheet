@@ -160,7 +160,7 @@
     //};
     var input = document.getElementById('message')
     input.addEventListener('keyup', function(e){
-      if(e.code = 'enter'){
+      if(e.code == 13){
       db.ref('messages').push({sender: 'default', message: input.value});
       input.value = '';
       }
