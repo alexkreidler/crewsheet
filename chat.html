@@ -90,10 +90,10 @@
     
     //function initMessages(){
       db.ref('messages').once('value', function(data){
-        console.log(data.value())
+        console.log(data.val())
       	var messages = [];
-        for(i=0; i<data.value().keys().length; i++){
-         messsages.push(data.value()[data.value().keys()[i]]);
+        for(i=0; i<data.val().keys().length; i++){
+         messsages.push(data.val()[data.val().keys()[i]]);
         }
         console.log(messages)
       });
