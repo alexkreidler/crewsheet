@@ -43,7 +43,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <ul class="list-group">
+          <ul class="list-group" id="content">
             <li class="list-group-item">Hello -
               <i>Bob</i>
             </li>
@@ -57,9 +57,6 @@
           </ul>
         </div>
       </div>
-    </div>
-    <div id="content">
-
     </div>
   </div>
 
@@ -102,13 +99,19 @@
         messages.forEach(function (message) {
           console.log(message);
           ret.push(React.createElement(
-            'div',
-            null,
-            message
+            "li",
+            { "class": "list-group-item" },
+            message,
+            " - ",
+            React.createElement(
+              "i",
+              null,
+              "Jim"
+            )
           ));
         });
         return React.createElement(
-          'div',
+          "div",
           null,
           ret
         );
