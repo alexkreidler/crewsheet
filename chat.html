@@ -72,17 +72,35 @@
       </div>
     </div>
   </div>
+
+
+  <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyC4WmgEmbtxehFYmv0Ooe3wSUyph09Ti18",
+      authDomain: "crewsheet-c7b9a.firebaseapp.com",
+      databaseURL: "https://crewsheet-c7b9a.firebaseio.com",
+      storageBucket: "crewsheet-c7b9a.appspot.com",
+      messagingSenderId: "567919490149"
+    };
+    firebase.initializeApp(config);
+    
+    var db = firebase.database();
+    
+    function initMessages(){
+      db.ref('messages').once('value', function(data){
+      	var messages = [];
+        for(i=0; i<data.keys().length; i++){
+         messsages.push(data[data.keys()[i]]);
+        }
+        console.log(messages)
+      });
+    };
+  </script>
+
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
-
-
-
-
-
-
-
-
-
 
 
 
