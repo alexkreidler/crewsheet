@@ -92,8 +92,8 @@
       db.ref('messages').once('value', function(data){
         console.log(data.val())
       	var messages = [];
-        for(i=0; i<data.val().keys().length; i++){
-         messsages.push(data.val()[data.val().keys()[i]]);
+        for(item in data.val()){
+         messages.push(item)
         }
         console.log(messages)
       });
