@@ -149,7 +149,20 @@
         }
         render();
       });
+    
+       db.ref('messages').on('value', function(data){
+        console.log(data.val())
+        window.messages = [];
+        for(key in data.val()){ window.messages.push(data.val()[key])
+        }
+        render();
+      });
     //};
+    var input = document.getElementById('message')
+    input.addEventListener('click', function(){
+      db.ref('messages').push({sender: 'default', message: input.value});
+      input.value = '';
+    });
   </script>
 
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
