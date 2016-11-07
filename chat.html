@@ -88,15 +88,16 @@
     
     var db = firebase.database();
     
-    function initMessages(){
+    //function initMessages(){
       db.ref('messages').once('value', function(data){
+        console.log(data.value())
       	var messages = [];
         for(i=0; i<data.value().keys().length; i++){
          messsages.push(data.value()[data.value().keys()[i]]);
         }
         console.log(messages)
       });
-    };
+    //};
   </script>
 
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
