@@ -159,9 +159,11 @@
       });
     //};
     var input = document.getElementById('message')
-    input.addEventListener('click', function(){
+    input.addEventListener('keyup', function(e){
+      if(e.code = 'enter'){
       db.ref('messages').push({sender: 'default', message: input.value});
       input.value = '';
+      }
     });
   </script>
 
