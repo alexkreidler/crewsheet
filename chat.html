@@ -73,6 +73,51 @@
     </div>
   </div>
 
+  <script>
+    'use strict';
+    
+    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+    
+    function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+    
+    function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+    
+    var Messages = function (_React$Component) {
+      _inherits(Messages, _React$Component);
+    
+      function Messages() {
+        _classCallCheck(this, Messages);
+    
+        return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
+      }
+    
+      Messages.prototype.render = function render() {
+        console.log(messages);
+        var ret = [];
+        messages.forEach(function (message) {
+          console.log(message);
+          ret.push(React.createElement(
+            'div',
+            null,
+            message
+          ));
+        });
+        return React.createElement(
+          'div',
+          null,
+          ret
+        );
+      };
+    
+      return Messages;
+    }(React.Component);
+    
+    //on new messages -->>
+    
+    function render() {
+      ReactDOM.render(React.createElement(Messages, null), document.getElementById('content'));
+    }
+  </script>
 
   <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
   <script>
@@ -89,13 +134,12 @@
     var db = firebase.database();
     
     //function initMessages(){
-      db.ref('messages').once('value', function(data){
+     db.ref('messages').once('value', function(data){
         console.log(data.val())
-      	var messages = [];
-        for(key in data.val()){
-         messages.push(data.val()[key])
+        window.messages = [];
+        for(key in data.val()){ window.messages.push(data.val()[key])
         }
-        console.log(messages)
+        render();
       });
     //};
   </script>
