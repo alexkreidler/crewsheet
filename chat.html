@@ -118,9 +118,10 @@
             }(React.Component);
             
             //on new messages -->>
-            
+    				var list = document.getElementById('content');
             function render() {
-              ReactDOM.render(React.createElement(Messages, null), document.getElementById('content'));
+              ReactDOM.render(React.createElement(Messages, null), list);
+              list.lastChild.scrollIntoView();
             }
   </script>
   <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
