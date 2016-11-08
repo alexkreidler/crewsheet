@@ -59,116 +59,110 @@
       </div>
     </div>
   </div>
-
-
-
-  <div class="m-y-1 section" style="position: absolute; bottom: 0; width: 100%;">
+  <div class="m-y-1 section" style="position: fixed; bottom: 0; width: 100%;">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-
           <input type="text" class="form-control" placeholder="Message ..." id="message">
         </div>
       </div>
     </div>
   </div>
-
   <script src="http://fb.me/react-15.0.2.js"></script>
   <script src="http://fb.me/react-dom-15.0.2.js"></script>
   <script>
     'use strict';
-    
-    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-    
-    function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-    
-    function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-    
-    var Messages = function (_React$Component) {
-      _inherits(Messages, _React$Component);
-    
-      function Messages() {
-        _classCallCheck(this, Messages);
-    
-        return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
-      }
-    
-      Messages.prototype.render = function render() {
-        console.log(messages);
-        var ret = [];
-        messages.forEach(function (message) {
-          console.log(message);
-          ret.push(React.createElement(
-            "li",
-            { "className": "list-group-item" },
-            message.message,
-            " - ",
-            React.createElement(
-              "i",
-              null,
-              message.sender
-            )
-          ));
-        });
-        return React.createElement(
-          "div",
-          null,
-          ret
-        );
-      };
-    
-      return Messages;
-    }(React.Component);
-    
-    //on new messages -->>
-    
-    function render() {
-      ReactDOM.render(React.createElement(Messages, null), document.getElementById('content'));
-    }
+            
+            function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+            
+            function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+            
+            function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+            
+            var Messages = function (_React$Component) {
+              _inherits(Messages, _React$Component);
+            
+              function Messages() {
+                _classCallCheck(this, Messages);
+            
+                return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
+              }
+            
+              Messages.prototype.render = function render() {
+                console.log(messages);
+                var ret = [];
+                messages.forEach(function (message) {
+                  console.log(message);
+                  ret.push(React.createElement(
+                    "li",
+                    { "className": "list-group-item" },
+                    message.message,
+                    " - ",
+                    React.createElement(
+                      "i",
+                      null,
+                      message.sender
+                    )
+                  ));
+                });
+                return React.createElement(
+                  "div",
+                  null,
+                  ret
+                );
+              };
+            
+              return Messages;
+            }(React.Component);
+            
+            //on new messages -->>
+            
+            function render() {
+              ReactDOM.render(React.createElement(Messages, null), document.getElementById('content'));
+            }
   </script>
-
   <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
   <script>
     // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyC4WmgEmbtxehFYmv0Ooe3wSUyph09Ti18",
-      authDomain: "crewsheet-c7b9a.firebaseapp.com",
-      databaseURL: "https://crewsheet-c7b9a.firebaseio.com",
-      storageBucket: "crewsheet-c7b9a.appspot.com",
-      messagingSenderId: "567919490149"
-    };
-    firebase.initializeApp(config);
-    
-    var db = firebase.database();
-    
-    //function initMessages(){
-     db.ref('messages').once('value', function(data){
-        console.log(data.val())
-        window.messages = [];
-        for(key in data.val()){ window.messages.push(data.val()[key])
-        }
-        render();
-      });
-    
-       db.ref('messages').on('value', function(data){
-        console.log(data.val())
-        window.messages = [];
-        for(key in data.val()){ window.messages.push(data.val()[key])
-        }
-        render();
-      });
-    //};
-    var input = document.getElementById('message')
-    input.addEventListener('keyup', function(e){
-      if(e.keyCode == 13){
-      db.ref('messages').push({sender: 'default', message: input.value});
-      input.value = '';
-      }
-    });
+            var config = {
+              apiKey: "AIzaSyC4WmgEmbtxehFYmv0Ooe3wSUyph09Ti18",
+              authDomain: "crewsheet-c7b9a.firebaseapp.com",
+              databaseURL: "https://crewsheet-c7b9a.firebaseio.com",
+              storageBucket: "crewsheet-c7b9a.appspot.com",
+              messagingSenderId: "567919490149"
+            };
+            firebase.initializeApp(config);
+            
+            var db = firebase.database();
+            
+            //function initMessages(){
+             db.ref('messages').once('value', function(data){
+                console.log(data.val())
+                window.messages = [];
+                for(key in data.val()){ window.messages.push(data.val()[key])
+                }
+                render();
+              });
+            
+               db.ref('messages').on('value', function(data){
+                console.log(data.val())
+                window.messages = [];
+                for(key in data.val()){ window.messages.push(data.val()[key])
+                }
+                render();
+              });
+            //};
+            var input = document.getElementById('message')
+            input.addEventListener('keyup', function(e){
+              if(e.keyCode == 13){
+              db.ref('messages').push({sender: 'default', message: input.value});
+              input.value = '';
+              }
+            });
   </script>
-
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+
 
 
 
