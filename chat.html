@@ -8,7 +8,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-full navbar-light bg-faded">
+  <nav class="fix navbar navbar-full navbar-light bg-faded">
     <a class="navbar-brand text-danger" href="#">CREWSHEET</a>
     <ul class="nav navbar-nav pull-right">
       <li class="nav-item active">
@@ -25,7 +25,7 @@
       </li>
     </ul>
   </nav>
-  <div class="section">
+  <div class="section fix">
     <div class="container">
       <div class="row">
         <div class="col-md-11 p-y-1">
@@ -165,6 +165,14 @@
   </script>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+
+  <style>
+    .fix {
+      posiion: fixed;
+    }
+  </style>
+
+
 
 
 
