@@ -1,0 +1,182 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="http://v4.pingendo.com/assets/bootstrap/themes/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <nav class="fix navbar navbar-full navbar-light bg-faded">
+    <a class="navbar-brand text-danger" href="#">CREWSHEET</a>
+    <ul class="nav navbar-nav pull-right">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="section fix">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-11 p-y-1">
+          <h1 class="">Be The Greater Good
+                            <br>
+                        </h1>
+          <h5 class="">Americorps NCCC
+                            <br>
+                        </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="list-group" id="content">
+            <li class="list-group-item">Hello -
+              <i>Bob</i>
+            </li>
+            <li class="list-group-item">Wazzup! -
+              <i>Joe</i>
+              <br>
+            </li>
+            <li class="list-group-item">Hey guys! -
+              <i>Jim</i>
+            </li>
+          </ul>
+          <br>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="m-y-1 section" style="position: fixed; bottom: 0; width: 100%;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <input type="text" class="form-control" placeholder="Message ..." id="message">
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="http://fb.me/react-15.0.2.js"></script>
+  <script src="http://fb.me/react-dom-15.0.2.js"></script>
+  <script>
+    'use strict';
+            
+            function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+            
+            function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+            
+            function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+            
+            var Messages = function (_React$Component) {
+              _inherits(Messages, _React$Component);
+            
+              function Messages() {
+                _classCallCheck(this, Messages);
+            
+                return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
+              }
+            
+              Messages.prototype.render = function render() {
+                console.log(messages);
+                var ret = [];
+                messages.forEach(function (message) {
+                  console.log(message);
+                  ret.push(React.createElement(
+                    "li",
+                    { "className": "list-group-item" },
+                    message.message,
+                    " - ",
+                    React.createElement(
+                      "i",
+                      null,
+                      message.sender
+                    )
+                  ));
+                });
+                return React.createElement(
+                  "div",
+                  null,
+                  ret
+                );
+              };
+            
+              return Messages;
+            }(React.Component);
+            
+            //on new messages -->>
+    			  var list = document.getElementById('content');
+            function render() {
+              ReactDOM.render(React.createElement(Messages, null), list);
+              window.scrollTo(0,document.body.scrollHeight);
+            }
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+            var config = {
+              apiKey: "AIzaSyC4WmgEmbtxehFYmv0Ooe3wSUyph09Ti18",
+              authDomain: "crewsheet-c7b9a.firebaseapp.com",
+              databaseURL: "https://crewsheet-c7b9a.firebaseio.com",
+              storageBucket: "crewsheet-c7b9a.appspot.com",
+              messagingSenderId: "567919490149"
+            };
+            firebase.initializeApp(config);
+            
+            var db = firebase.database();
+            
+            //function initMessages(){
+             db.ref('messages').once('value', function(data){
+                console.log(data.val())
+                window.messages = [];
+                for(key in data.val()){ window.messages.push(data.val()[key])
+                }
+                render();
+              });
+            
+               db.ref('messages').on('value', function(data){
+                console.log(data.val())
+                window.messages = [];
+                for(key in data.val()){ window.messages.push(data.val()[key])
+                }
+                render();
+              });
+            //};
+            var input = document.getElementById('message')
+            input.addEventListener('keyup', function(e){
+              if(e.keyCode == 13){
+              db.ref('messages').push({sender: 'default', message: input.value});
+              input.value = '';
+              }
+            });
+  </script>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+
+  <style>
+    .fix {
+      posiion: fixed;
+    }
+  </style>
+
+
+
+
+
+
+</body>
+
+</html>
